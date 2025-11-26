@@ -24,8 +24,10 @@ import { getBundleConfig, upsertBundleConfig } from "~/models/bundleConfig.serve
 import { authenticate } from "~/shopify.server";
 import type { VariantSummary } from "~/types/variant";
 
+const MIN_BUNDLE_SIZE = 2;
+
 const formSchema = z.object({
-  bundleSize: z.coerce.number().int().min(2),
+  bundleSize: z.coerce.number().int().min(MIN_BUNDLE_SIZE),
   bundlePrice: z.coerce.number().positive(),
   label: z.string().min(3).max(60),
   variantIds: z.array(z.string()).min(1, "Select at least one product variant"),
@@ -189,7 +191,7 @@ export default function AppIndex() {
                       label="How many items trigger the discount?"
                       name="bundleSize"
                       type="number"
-                      min={2}
+                      min={MIN_BUNDLE_SIZE}
                       value={bundleSize}
                       onChange={setBundleSize}
                       autoComplete="off"
