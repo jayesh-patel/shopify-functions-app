@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Session {
+  id          String   @id
+  shop        String
+  state       String
+  isOnline    Boolean
+  scope       String?
+  expires     DateTime?
+  accessToken String?
+  userId      BigInt?
+}
+
+model ShopConfig {
+  id             String   @id @default(cuid())
+  shopDomain     String   @unique
+  bundleSize     Int
+  bundlePrice    Decimal  @db.Decimal(10, 2)
+  label          String
+  variantIds     Json
+  discountNodeId String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}

@@ -1,0 +1,46 @@
+{
+  "name": "web",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "scripts": {
+    "dev": "remix dev",
+    "build": "prisma generate && remix build",
+    "start": "remix-serve ./build/server/index.js",
+    "lint": "eslint .",
+    "prisma:push": "prisma db push",
+    "prisma:generate": "prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.13.0",
+    "@remix-run/node": "^2.10.3",
+    "@remix-run/react": "^2.10.3",
+    "@remix-run/serve": "^2.10.3",
+    "@shopify/app-bridge-react": "^5.2.1",
+    "@shopify/polaris": "^12.16.0",
+    "@shopify/shopify-api": "^11.1.0",
+    "@shopify/shopify-app-remix": "^2.3.0",
+    "@shopify/shopify-app-session-storage-prisma": "^1.0.5",
+    "clsx": "^2.1.1",
+    "cross-fetch": "^4.0.0",
+    "graphql": "^16.8.1",
+    "isbot": "^5.1.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^2.10.3",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
+    "eslint-plugin-react": "^7.34.1",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.11",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
+    "prisma": "^5.13.0",
+    "typescript": "^5.4.5"
+  }
+}

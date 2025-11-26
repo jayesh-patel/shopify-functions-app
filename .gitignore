@@ -1,0 +1,14 @@
+node_modules
+.env
+.env.*
+/web/build
+/web/public/build
+/web/prisma/dev.db
+/web/prisma/**/*.db
+/dist
+/extensions/**/dist
+.DS_Store
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.sentryclirc
