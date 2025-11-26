@@ -101,9 +101,23 @@ export async function action({ request }: ActionFunctionArgs) {
     );
   }
 
-  const discount = existingConfig?.discountNodeId
-    ? await updateDiscount(admin, existingConfig.discountNodeId, functionId, payload)
-    : await createDiscount(admin, functionId, payload);
+  let discount;
+  try {
+    discount = existingConfig?.discountNodeId
+      ? await updateDiscount(admin, existingConfig.discountNodeId, functionId, payload)
+      : await createDiscount(admin, functionId, payload);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Failed to save the discount. Please try again.";
+    return json(
+      {
+        ok: false,
+        errors: {
+          discount: [message],
+        },
+      },
+      { status: 400 }
+    );
+  }
 
   const savedConfig = await upsertBundleConfig({
     shopDomain: session.shop,
