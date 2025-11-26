@@ -1,0 +1,21 @@
+{
+  "name": "x-for-y-discount-app",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "npm@10.8.1",
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "workspaces": [
+    "web",
+    "extensions/x-for-y-discount"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace web",
+    "build:web": "npm run build --workspace web",
+    "build:function": "npm run build --workspace extensions/x-for-y-discount",
+    "build": "npm run build:web",
+    "lint": "npm run lint --workspace web",
+    "deploy": "npm run start --workspace web"
+  }
+}

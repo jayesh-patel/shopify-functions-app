@@ -1,0 +1,65 @@
+type Configuration {
+  bundleQuantity: Int!
+  bundlePrice: Decimal!
+  label: String!
+  variantIds: [ID!]!
+}
+
+type FunctionRunInput {
+  cart: Cart!
+  configuration: Configuration!
+}
+
+type FunctionRunResult {
+  discounts: [Discount!]!
+  discountApplicationStrategy: DiscountApplicationStrategy!
+}
+
+type Discount {
+  targets: [Target!]!
+  value: DiscountValue!
+  message: String
+}
+
+enum DiscountApplicationStrategy {
+  FIRST
+  MAXIMUM
+}
+
+type Target {
+  cartLineId: ID!
+}
+
+type DiscountValue {
+  fixedAmount: DiscountFixedAmountValue
+}
+
+type DiscountFixedAmountValue {
+  amount: Decimal!
+  appliesToEachItem: Boolean!
+}
+
+type Cart {
+  lines: [CartLine!]!
+}
+
+type CartLine {
+  id: ID!
+  quantity: Int!
+  cost: CartLineCost!
+  merchandise: Merchandise!
+}
+
+type CartLineCost {
+  amountPerQuantity: Money!
+}
+
+type Money {
+  amount: Decimal!
+}
+
+union Merchandise = ProductVariant
+
+type ProductVariant {
+  id: ID!
+}

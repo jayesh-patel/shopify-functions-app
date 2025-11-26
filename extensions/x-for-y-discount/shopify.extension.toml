@@ -1,0 +1,12 @@
+name = "X for Y Discount Function"
+type = "product_discounts"
+handle = "x-for-y-discount"
+description = "Mix-and-match bundle pricing"
+api_version = "2024-10"
+
+[build]
+command = "npm run build"
+path = "dist/function.wasm"
+
+[input]
+query_path = "input.graphql"
