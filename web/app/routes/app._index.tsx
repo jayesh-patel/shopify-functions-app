@@ -189,7 +189,7 @@ export default function AppIndex() {
                       label="How many items trigger the discount?"
                       name="bundleSize"
                       type="number"
-                      min={1}
+                      min={2}
                       value={bundleSize}
                       onChange={setBundleSize}
                       autoComplete="off"
